@@ -1,0 +1,43 @@
+3.1 – Looking at processes:
+Todo programa executa a partir de um ou mais processos, os quais, cada um,
+possui um ID único em tempo de execução, e é criado por outro processo, formando uma
+árvore de processos, com o init sendo o primeiro. Para listar o ID do processo e de seu
+processo pai Um processo pode ser finalizado através de um comando kill, que envia um sinal
+de morte para o processo, podendo executar de diversas maneiras. Isso é chamado
+SIGTERM.
+
+
+3.2 – Creating Processes
+Para criar um processo, podemos usar a linguagem C para executar um comando
+System, para clonar um processo podemos utilizar o comando fork.
+O comando exec substitui o programa que está rodando em um processo. Podemos
+usar exec e fork juntos, gerando uma cópia do processo e substituindo o programa que
+roda no processo, ou seja, criamos outro processo, com outro programa. Para isso
+utilizamos o comando Spawn, passando o comando principal, e uma lista de argumentos
+para execução.
+Podemos requisitar a execução de processos. Para determinar a ordem de
+execução, podemos utilizar o comando nice, onde um número positivo determina menor
+prioridade, e um negativo determina maior prioridade. Isso facilita que demos maior
+agilidade a um processo requerido, ou menor prioridade a um processo conhecidamente
+lentoAlém disso, o comando renice permite mudar a prioridade de um programa que
+já está em execução
+
+3.3 – Signals:
+Os sinais são usados para modificar a execução de um processo, como por
+exemplo sua interrupção. Para sua execução existe um signal-handler, que pausa a
+execução do programa, executa o sinal, e depois o retorna. Como os processos são assíncronos,
+ o programa principal pode ser “frágil” quando um
+sinal recebido é processado enquanto um verificador de sinal é executado. É recomendado
+evitar operações de I/O (entrada e saída), performar operações de I/O (entrada e saída) ou
+chamar a maior parte das bibliotecas e funções de sistemas de signal handlers.
+
+3.4 – Process Termination
+Para a finalização de um processo, basta que o próprio programa chame a função
+exit. Além disso, finalizações “irregulares” podem ser feitas através de sinais de
+finalização. Além disso, temos o Processos Zumbi: quando um processo filho seja encerrado enquanto o processo pai esteja aguardando o
+retorno da função wait, o processo filho se encerra e retorna um código de status referente ao
+seu término para o processo pai através da função wait.
+Caso um processo filho seja encerrado quando o processo pai não aguarda seu
+encerramento através da função wait, ele se torna um “processo zumbi”. Em outras palavras, o
+processo zumbi é um processo que foi encerrado mas ainda não foi completamente removido.
+A remoção do processo filho é de responsabilidade do processo pai.
