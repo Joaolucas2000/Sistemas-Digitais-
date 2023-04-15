@@ -1,0 +1,5 @@
+b1 - O limite é de 60KB.
+
+b2 - Podemos fazer a divisão do arquivo em vários pacotes, usando sistema de codificação/decodificação, dessa forma evitamos o corrompimento e otimizamos a trnasição dos dados.
+
+b3 - O protocolo TCP, de forma geral, é mais seguro, caso alguma informação seja perdida, o protocolo trata de enviar novamente os dados, dessa maneira, os dados são entregues e não há perdas. Já no protocolo UDP, caso a mensagem não seja entregue de forma completa, não é possivel recuperar as sinformações 
